@@ -334,51 +334,6 @@ decrypt_data:
 	clr r1
 	ret
 
-push_call_saved_regs:
-	push r2
-	push r3
-	push r4
-	push r5
-	push r6
-	push r7
-	push r8
-	push r9
-	push r10
-	push r11
-	push r12
-	push r13
-	push r14
-	push r15
-	push r16
-	push r17
-	push r28
-	push r29
-
-	ret
-
-pop_call_saved_regs:
-	pop r29
-	pop r28
-	pop r17
-	pop r16
-	pop r15
-	pop r14
-	pop r13
-	pop r12
-	pop r11
-	pop r10
-	pop r9
-	pop r8
-	pop r7
-	pop r6
-	pop r5
-	pop r4
-	pop r3
-	pop r2
-	;clr r1
-
-	ret
-
 convert_arguments_key_exp:
 	;pointer to memory
 	movw Y, r8
@@ -404,9 +359,9 @@ convert_arguments_key_dec:
 ;converts args from GCC cal. conv. to internal conv.
 convert_arguments_dec:
 convert_arguments_enc:
-	adiw X, 2
-	LD YH, X+
-	LD YL, X
+	adiw X, 3
+	LD YL, X+
+	LD YH, X
 
 	;implicit pointer for return value
 	movw X, r24
@@ -438,6 +393,9 @@ convert_result_enc:
 	ST X+, ST23
 	ST X+, ST33
 	ST X+, ST43
+	ST X+, ST14
+	ST X+, ST24
+	ST X+, ST34
 	ST X+, ST44
 
 	ret
