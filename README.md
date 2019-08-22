@@ -19,6 +19,9 @@ void function()
 {
   struct data key_material = {KEY_MATERIAL};
   expand_key(key_material, expanded_key);
+  
+  struct data pt;
+  struct data ct;
   ...
   ct = encrypt_data(pt, expanded_key);
   pt = decrypt_data(ct, expanded_key);
